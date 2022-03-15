@@ -18,6 +18,6 @@ module.exports = {
     filename: 'bundle.js'
   },
   devServer: {
-    inline: false
+    inline: false // 为了演示，浏览器产生新的 bundle 包时不自动刷新
   }
 };
