@@ -1,7 +1,7 @@
 {
     "extends": "../tsconfig.base",
     "compilerOptions": {
-        "removeComments": true
+        "removeComments": true // 去掉 ts 文件中的注释
     },
     "include": [
         "./**/*"
