@@ -1,7 +1,7 @@
 function startGame() {
 
     const playerName: string | undefined = getInputValue('playername');
-    
+
     postedScore(100, playerName);
 
     postedScore(-5, playerName);
@@ -20,7 +20,7 @@ function getInputValue(elementId: string): string | undefined {
     if (inputElement.value === '') {
         return undefined;
     }
-    else{
+    else {
         return inputElement.value
     }
 }
@@ -29,7 +29,7 @@ function postedScore(score: number, playerName: string = 'MultiMath Player') {
 
     // 函数类型的 变量
     let logger: (value: string) => void;
-    if(score < 0) {
+    if (score < 0) {
         logger = logError
     } else {
         logger = logMessage;
@@ -46,4 +46,16 @@ function logError(err: string): void {
 }
 
 document.getElementById('startGame')!.addEventListener('click', startGame);
+
+let myResult: IResult = {
+    playerName: 'Marie',
+    score: 5,
+    problemCount: 5,
+    factor: 7
+};
+
+let player: IPerson = {
+    name: 'Daniel',
+    formatName: () => "Dan"
+};
 
