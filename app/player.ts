@@ -1,7 +1,7 @@
 /// <reference path="person.ts"/>
 
 class Player implements IPerson {
-    name: string;
+    name: string = 'lll';
     age?: number;
     highScore?: number;
 
