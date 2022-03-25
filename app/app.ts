@@ -1,56 +1,21 @@
-/// <reference path="player.ts"/>
+/// <reference path="game.ts"/>
+/// <reference path="utility.ts"/>
 
-function startGame() {
+let newGame: Game;
 
-    const playerName: string | undefined = getInputValue('playername');
+// add click handler to the start game button
+document.getElementById('startGame')!.addEventListener('click', () => {
+    const player: Player = new Player();
+    player.name = Utility.getInputValue('playername');
 
-    postedScore(100, playerName);
+    const problemCount: number = Number(Utility.getInputValue('problemCount'));
+    const factor: number = Number(Utility.getInputValue('factor'));
 
-    postedScore(-5, playerName);
+    newGame = new Game(player, problemCount, factor);
+    newGame.displayGame();
+})
 
-    logPlayer(playerName);
-}
-
-function logPlayer(name: string = 'MultiMath Player') {
-    console.log(`New game starting for player:${name}`);
-}
-
-function getInputValue(elementId: string): string | undefined {
-
-    const inputElement: HTMLInputElement = <HTMLInputElement>document.getElementById(elementId);
-
-    if (inputElement.value === '') {
-        return undefined;
-    }
-    else {
-        return inputElement.value
-    }
-}
-
-function postedScore(score: number, playerName: string = 'MultiMath Player') {
-
-    // 函数类型的 变量
-    let logger: (value: string) => void;
-    if (score < 0) {
-        logger = logError
-    } else {
-        logger = logMessage;
-    }
-    const scoreElement: HTMLElement | null = document.getElementById('postedScores');
-    scoreElement!.innerText = `${score} -${playerName}`;
-    logger(`Score is ${score}.`);
-}
-
-const logMessage = (message: string) => console.log(message);
-
-function logError(err: string): void {
-    console.error(err);
-}
-
-document.getElementById('startGame')!.addEventListener('click', startGame);
-
-const firstPlayer: Player = new Player();
-firstPlayer.name = 'Lanier';
-console.log(firstPlayer.formatName());
-
-
+// add click handler to the calculate score button
+document.getElementById('calculate')!.addEventListener('click', () => {
+    newGame.calculateScore();
+})
