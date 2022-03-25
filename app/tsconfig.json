@@ -1,9 +1,10 @@
 {
     "extends": "../tsconfig.base",
     "compilerOptions": {
-        "removeComments": true // 去掉 ts 文件中的注释
+        "removeComments": true, // 去掉 ts 文件中的注释
+        "outFile": "../js/app.js" // 将所有要编译的文件，输出到指定的这个文件中
     },
-    "include": [
-        "./**/*"
+    "files": [
+        "./app.ts" // 要编译哪些文件
     ]
 }
