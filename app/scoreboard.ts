@@ -1,11 +1,13 @@
-/// <reference path="result.ts"/>
+import { IResult } from './result';
+import * as _ from 'lodash';
 
-class Scoreboard {
+export class Scoreboard {
 
     private results: IResult[] = [];
 
     addResult(newResult: IResult): void {
         this.results.push(newResult);
+        console.log(_.upperCase(newResult.playerName));
     }
 
     updateScoreboard(): void {
